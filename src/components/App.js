@@ -8,7 +8,6 @@ function App() {
   const[ sushiList , setSushiList ] = useState([])
  
   const [remainingMoney, setRemainingMoney] = useState(100);
- 
 
 
   // Calculate remaining money
@@ -29,10 +28,14 @@ function App() {
       alert("Not enough money to buy this sushi!");
     }
   }
+  const onAddMoney = (amount) => {
+    setRemainingMoney((prevMoney) => prevMoney + amount);
+  };
   return (
     <div className="app">
+  
       <SushiContainer sushiList={sushiList} setIsEaten={handleSetIsEaten}/>
-      <Table plates={sushiList} remainingMoney={remainingMoney}  />
+      <Table plates={sushiList} remainingMoney={remainingMoney} onAddMoney={onAddMoney} />
     </div>
   );
 }
